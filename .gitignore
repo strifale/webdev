@@ -1,5 +1,6 @@
 # resources
-!/devcamper_project_resources
+dict/
+.DS_Store
 
 # Logs
 logs
