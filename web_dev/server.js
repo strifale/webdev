@@ -8,16 +8,12 @@ const todos = [
 ];
 
 const server = http.createServer((req, res) => {
-    //res.setHeader('Content-Type', 'application/json'); //need header type for browser to know what to render
-    //res.setHeader('X-Powered-By', 'Node.js');
     const { method, url } = req;
-    //res.write('Hello');
-    //res.write('<h1>Hello</h1>');
-        //console.log(req.headers.authorization);
     let body = [];
     req
         .on('data', (chunk) => {
-        body.push(chunk);
+        //console.log(chunk.toString());
+        body.push(chunk); //chunk is the input data from the request (client)
         })
         .on('end', () => {
             body = Buffer.concat(body).toString();
@@ -27,20 +23,33 @@ const server = http.createServer((req, res) => {
             const response = {
                 success: false,
                 data: null,
+                error: null
             };
 
             if (method === 'GET' && url === '/todos') {
                 status = 200;
                 response.success = true;
                 response.data = todos;
-            };
+            } else if(method === 'POST' && url === '/todos') {
+                const {id, text} = JSON.parse(body);
+                
+                if (!id || !text) {
+                    status = 400;
+                    response.error = "Please add id and text"
+                } else {
+                        todos.push({id, text});
+                        status = 201;
+                        response.success = true;
+                        response.data = todos;
+                }
+            }
 
             res.writeHead(status, {
-                'Content-Type': 'application/json',
                 'X-Powered-By': 'Node.js',
+                'Content-Type': 'application/json',
             });
-            //console.log(body);
-            res.end(JSON.stringify(response)); //200 response
+
+            res.end(JSON.stringify(response)); //The JSON.stringify() method converts a JavaScript object or value to a JSON string
         }); 
 });
 
