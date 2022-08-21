@@ -26,4 +26,4 @@ E.g.: function in routes/emails.js will not be called in the server.js
 but will only be called in the routes/emails.js dir (??).
 
 --> examples: custom logging middleware (console.log with different req
-attributes)
+attributes); replaced this with 3rd party custom logging middleware
