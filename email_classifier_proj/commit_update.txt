@@ -1,0 +1,19 @@
+In this commit, we create scripts where 
+we can run 'npm start' --> production mode
+and 'npm run dev' --> development mode
+
+We haven't created any routes so that's Why
+we get 404 status error in this version
+---------
+It seems that npm start overrides config file info, so NODE_ENV = production 
+instead of development
+
+------------------------
+Route structures (can change in the fuuture):
+
+/api/v1/emails
+/api/v1/headers
+/api/v1/reviews
+/api/v1/auth
+/api/v1/users
+

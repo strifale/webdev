@@ -1,6 +1,9 @@
 # resources
 dict/
 .DS_Store
+.prettierrc
+questions.txt
+config/
 
 # Logs
 logs
