@@ -1,6 +1,6 @@
 const express = require('express'); //require includes modules in the app
 const dotenv = require('dotenv');
-const { application } = require('express');
+const logger = require('./middleware/logger');
 
 //Route files
 const emails = require('./routes/emails');
@@ -9,12 +9,6 @@ const emails = require('./routes/emails');
 dotenv.config({ path: './config/config.env' });
 
 const app = express(); //initialize app variable with express
-
-const logger = (req, res, next) => {
-  req.hello = 'hello world';
-  console.log('Middleware ran');
-  next(); //move on to the next piece of middleware in the cycle
-};
 
 app.use(logger);
 

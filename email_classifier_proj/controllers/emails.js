@@ -4,7 +4,7 @@
 // @route                        GET /api/v1/emails
 // @access                       Public
 exports.getEmails = (req, res, next) => {
-  res.status(200).json({ success: true, msg: 'show all emails', hello: req.hello });
+  res.status(200).json({ success: true, msg: 'show all emails'});
 };
 
 // @desc                         Get single email
