@@ -17,3 +17,10 @@ Route structures (can change in the fuuture):
 /api/v1/auth
 /api/v1/users
 
+----------------------
+https://www.geeksforgeeks.org/express-js-app-listen-function/
+---------Middleware:
+Middleware functions that are called inside other middleware will 
+not be called by the primary app that is calling the middleware
+E.g.: function in routes/emails.js will not be called in the server.js
+but will only be called in the routes/emails.js dir (??).
